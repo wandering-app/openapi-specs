@@ -5,10 +5,11 @@ This repository contains OpenAPI specifications of various APIs provided by US g
 > **Note**:
 > This repository is in it's early phase, and thus will be under construction. We cannot guarantee the permanent file paths of various OpenAPI specifications just yet. Please hold! Thank you :)
 
-| Progress | Organization | Website | Directory |
-| -------- | ------------ | ------- | --------- |
-| ✅ Available | GSA Open Technology | <https://open.gsa.gov/> | [`./opengsa`](./opengsa) |
-| 🚧 In progress | US Congress | <https://api.congress.gov/> | N/A |
+| Progress       | Organization/Service    | Website | File path |
+| -------------- | ----------------------- | ------- | --------- |
+| ✅ Available   | GSA Open Technology     | <https://open.gsa.gov/>     | [`./opengsa`](./opengsa) |
+| ✅ Available   | Lobbying Disclosure Act | <https://lda.senate.gov/>   | [`./ldasenate`](./ldasenate/) |
+| 🚧 In progress | US Congress             | <https://api.congress.gov/> | N/A |
 
 ## License
 This library is licensed under the MIT license ([`LICENSE-MIT`](./LICENSE) or http://opensource.org/licenses/MIT).
