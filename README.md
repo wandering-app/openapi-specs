@@ -9,7 +9,7 @@ This repository contains OpenAPI specifications of various APIs provided by US g
 
 The **Kind** column represents how the OpenAPI specifications are sourced. There are a few kinds:
 - Mirrored: Directly sources the original OpenAPI specification files into this repository.
-- Generated: The OpenAPI specification file is generated either using another source.
+- Generated: The OpenAPI specification file is generated using another source.
 - To generate/mirror: Not done yet, will be done through either one of the two methods.
 
 | Progress       | Organization/Service    | Website | File path | Kind |
