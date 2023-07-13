@@ -1,5 +1,7 @@
 # openapi-specs
 
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 This repository contains OpenAPI specifications of various APIs provided by US government-related services and organizations.
 
 > **Note**:
