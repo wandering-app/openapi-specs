@@ -20,8 +20,8 @@ The **Status** column is represented with emojis:
 
 | Status | Organization/Service    | Website | File path | Kind |
 | ------ | ----------------------- | ------- | --------- | ---- |
-| ✅     | GSA Open Technology       | <https://open.gsa.gov/>             | [`./opengsa`](./opengsa) | Mirrored |
-| ✅     | Lobbying Disclosure Act   | <https://lda.senate.gov/>           | [`./ldasenate`](./ldasenate/) | Mirrored |
+| ✅     | GSA Open Technology       | <https://open.gsa.gov/>             | [`./specs/opengsa/`](./specs/opengsa) | Mirrored |
+| ✅     | Lobbying Disclosure Act   | <https://lda.senate.gov/>           | [`./specs/ldasenate/`](./specs/ldasenate/) | Mirrored |
 | 🚧     | US Census Bureau          | <https://www.census.gov/>           | N/A | To generate |
 | 🚧     | US Congress               | <https://api.congress.gov/>         | N/A | To generate |
 | 🚧     | Massachusetts Legislature | <https://malegislature.gov/>        | N/A | To generate |
