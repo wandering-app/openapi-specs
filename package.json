@@ -1,0 +1,28 @@
+{
+  "name": "@wandering-app/openapi-specs",
+  "private": true,
+  "version": "0.0.0",
+  "description": "[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)",
+  "license": "MIT",
+  "author": "Samantha Nguyen",
+  "keywords": [
+    "openapi"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wandering-app/openapi-specs.git"
+  },
+  "homepage": "https://github.com/wandering-app/openapi-specs#readme",
+  "bugs": {
+    "url": "https://github.com/wandering-app/openapi-specs/issues"
+  },
+  "type": "module",
+  "scripts": {
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "eslint": "^8.44.0",
+    "eslint-plugin-yml": "^1.8.0",
+    "node-sql-parser": "^4.7.0"
+  }
+}
