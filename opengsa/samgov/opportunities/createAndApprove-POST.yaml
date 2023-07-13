@@ -1,0 +1,67 @@
+/v1/api/opportunities/access/{opportunityId}/accessRequest
+post: 
+  consumes: 
+    - application/json
+  deprecated: false
+  description: "Add Authorized Party to the Opportunity"
+  operationId: createAndApproveRequestUsingPOST
+  parameters: 
+    - 
+      description: Authorization
+      in: header
+      name: Authorization
+      required: true
+      type: string
+    - 
+      description: api_key
+      in: query
+      name: api_key
+      required: true
+      type: string
+    - 
+      description: opportunityId
+      in: path
+      name: opportunityId
+      required: true
+      type: string
+    - 
+      description: requestJson
+      in: body
+      name: requestJson
+      required: false
+      schema: 
+        type: string
+  produces: 
+    - application/json
+  responses: 
+    "200": 
+      description: OK
+      schema: 
+        type: object
+    "201": 
+      description: Created
+    "400": 
+      description: "Bad Request"
+      schema: 
+        type: string
+    "401": 
+      description: Unauthorized
+      schema: 
+        type: string
+    "403": 
+      description: Forbidden
+      schema: 
+        type: string
+    "404": 
+      description: "Not Found"
+    "500": 
+      description: "Internal Server Error"
+      schema: 
+        type: string
+    "501": 
+      description: "Not Implemented"
+      schema: 
+        type: string
+  summary: "Add Authorized Party to the Opportunity"
+  tags: 
+    - attachments

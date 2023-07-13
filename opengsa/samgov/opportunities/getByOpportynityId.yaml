@@ -1,0 +1,63 @@
+/v1/api/{opportunityId}:
+    get:
+      tags:
+        - Opportunity
+      summary: Get contract opportunity
+      description: Get contract opportunity.
+      operationId: getOpportunityUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          description: Authorization
+          required: true
+          type: string
+        - name: api_key
+          in: query
+          description: api_key
+          required: true
+          type: string
+        - name: latest
+          in: query
+          description: latest
+          required: false
+          type: boolean
+          default: false
+          allowEmptyValue: false
+          x-example: false
+        - name: opportunityId
+          in: path
+          description: opportunityId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '400':
+          description: Bad Request
+          schema:
+            type: string
+        '401':
+          description: Unauthorized
+          schema:
+            type: string
+        '403':
+          description: Forbidden
+          schema:
+            type: string
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+          schema:
+            type: string
+        '501':
+          description: Not Implemented
+          schema:
+            type: string
+      security:
+        - Token-based Access: []
+      deprecated: false
