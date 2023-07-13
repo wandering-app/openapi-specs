@@ -2,7 +2,7 @@
   "name": "@wandering-app/openapi-specs",
   "private": true,
   "version": "0.0.0",
-  "description": "[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)",
+  "description": "OpenAPI specifications of US government related services and organizations",
   "license": "MIT",
   "author": "Samantha Nguyen",
   "keywords": [
