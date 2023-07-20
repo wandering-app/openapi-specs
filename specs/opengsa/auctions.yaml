@@ -4,23 +4,23 @@ info:
   title: Auctions API
   description: GSA Auctions API is a public GET API. The Auction listings will be delivered to the user in two formats. One is JSON and the other one is XML. The auction listings delivered thru the API contains the auction listings from all the participating agencies.
 paths:
-  '/auctions':
+  /auctions:
     get:
       summary: Auction listings
       description: |
-        this endpoint returns auction listings. 
+        this endpoint returns auction listings.
       responses:
-        '200':
+        "200":
           description: A JSON object containing an array of auction listings
           content:
             application/json:
               schema:
                 type: object
                 items:
-                  $ref: '#/components/schemas/result'    
-                  
+                  $ref: "#/components/schemas/result"
+
 servers:
-  - url: 'https://api.gsa.gov/assets/gsaauctions/v2/'
+  - url: "https://api.gsa.gov/assets/gsaauctions/v2/"
 components:
   schemas:
     result:
@@ -28,137 +28,137 @@ components:
       properties:
         results:
           type: array
-          items: 
-            $ref: '#/components/schemas/auction'       
-          description:  Array of auction listings.
+          items:
+            $ref: "#/components/schemas/auction"
+          description: Array of auction listings.
     auction:
       type: object
       properties:
         SaleNo:
-          type: string     
-          description:  This field identifies a specific sale number created by the region  
+          type: string
+          description: This field identifies a specific sale number created by the region
         LotNo:
           type: integer
           format: int32
-          description:  This code indicating the sequential order in which an item appears on an invitation for bid  
+          description: This code indicating the sequential order in which an item appears on an invitation for bid
         AucStartDt:
-          type: string     
-          description:  Auction start date 
+          type: string
+          description: Auction start date
         AucEndDt:
-          type: string     
-          description:  Auction end date
+          type: string
+          description: Auction end date
         ItemName:
-          type: string     
-          description:  This is the brief description of the item
+          type: string
+          description: This is the brief description of the item
         PropertyAddr1:
-          type: string     
-          description:  Agency name where property is located
+          type: string
+          description: Agency name where property is located
         PropertyAddr2:
-          type: string     
-          description:  Agency 2nd line of clear text address
+          type: string
+          description: Agency 2nd line of clear text address
         PropertyAddr3:
-          type: string     
-          description:  P.O. Box/street address name of where property is located
+          type: string
+          description: P.O. Box/street address name of where property is located
         PropertyCity:
-          type: string     
-          description:  Property location city
+          type: string
+          description: Property location city
         PropertyState:
-          type: string     
-          description:  Property location state 
+          type: string
+          description: Property location state
         PropertyZip:
-          type: string     
-          description:  Property location zip code
+          type: string
+          description: Property location zip code
         AuctionStatus:
-          type: string     
-          description:  Property location zip code
+          type: string
+          description: Property location zip code
         SaleLocation:
-          type: string     
-          description:  Location of sale 
+          type: string
+          description: Location of sale
         LocationOrg:
-          type: string     
-          description:  Location organizational subdivision
+          type: string
+          description: Location organizational subdivision
         LocationStAddr:
-          type: string     
-          description:  Location P.O. Box/Street address
+          type: string
+          description: Location P.O. Box/Street address
         LocationCity:
-          type: string     
-          description:  City sale Location
+          type: string
+          description: City sale Location
         LocationST:
-          type: string     
-          description:  State abbreviation location
+          type: string
+          description: State abbreviation location
         LocationZip:
-          type: string     
-          description:  Sale location zip code
+          type: string
+          description: Sale location zip code
         BiddersCount:
           type: integer
           format: int64
-          description:  Number of Bidders on the sale
-        LotInfo:  
+          description: Number of Bidders on the sale
+        LotInfo:
           type: array
-          items: 
-            $ref: '#/components/schemas/lotinfo'       
-          description:  Array of LotInfo objects.
+          items:
+            $ref: "#/components/schemas/lotinfo"
+          description: Array of LotInfo objects.
         Instruction1:
-          type: string     
-          description:  Special Inspection Instructions Line 1
+          type: string
+          description: Special Inspection Instructions Line 1
         Instruction2:
-          type: string     
-          description:  Special Inspection Instructions Line 2
+          type: string
+          description: Special Inspection Instructions Line 2
         Instruction3:
-          type: string     
-          description:  Special Inspection Instructions Line 3
+          type: string
+          description: Special Inspection Instructions Line 3
         ContractOfficer:
-          type: string     
-          description:  The Sales Contracting Officer that is assigned to the sale
+          type: string
+          description: The Sales Contracting Officer that is assigned to the sale
         COEmail:
-          type: string     
-          description:  The Email address for the Sales Contracting Officer that is assigned to the sale
+          type: string
+          description: The Email address for the Sales Contracting Officer that is assigned to the sale
         COPhone:
-          type: string     
-          description:  The Phone number for the Sales Contracting Officer that is assigned to the sale
+          type: string
+          description: The Phone number for the Sales Contracting Officer that is assigned to the sale
         Reserve:
           type: number
           format: float
-          description:  The minimum dollar amount that the sale must reach before it may be awarded to a bidder
+          description: The minimum dollar amount that the sale must reach before it may be awarded to a bidder
         AucIncrement:
           type: number
           format: float
-          description:  The bid increment that the sale use during the bidding process
+          description: The bid increment that the sale use during the bidding process
         HighBidAmount:
-          type: string     
-          description:  Highest bid amount
+          type: string
+          description: Highest bid amount
         InactivityTime:
           type: integer
           format: int32
-          description:  The period of time in minutes that there is no bidding activity on a sale
+          description: The period of time in minutes that there is no bidding activity on a sale
         AgencyCode:
-          type: string     
-          description:  Agency Code
+          type: string
+          description: Agency Code
         BureauCode:
-          type: string     
-          description:  Bureau Code
+          type: string
+          description: Bureau Code
         AgencyName:
-          type: string     
-          description:  Agency Name
+          type: string
+          description: Agency Name
         BureauName:
-          type: string     
-          description:  Bureau Name
+          type: string
+          description: Bureau Name
         ItemDescURL:
-          type: string     
-          description:  Item description URL
+          type: string
+          description: Item description URL
         ImageURL:
-          type: string     
-          description:  URL of an item image 
+          type: string
+          description: URL of an item image
     lotinfo:
       type: object
       properties:
         LotSequence:
           type: integer
           format: int32
-          description:  Lot Sequence Number
+          description: Lot Sequence Number
         LotDescript:
-          type: string     
-          description:  Lot Description
+          type: string
+          description: Lot Description
 
   parameters:
     format:
@@ -170,10 +170,10 @@ components:
       required: false
 
   securitySchemes:
-    ApiKeyAuth:        # arbitrary name for the security scheme
+    ApiKeyAuth: # arbitrary name for the security scheme
       type: apiKey
       in: header       # can be "header", "query" or "cookie"
       name: X-API-KEY  # name of the header, query parameter or cookie
 security:
   - ApiKeyAuth: []
-  
+

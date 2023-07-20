@@ -1,10 +1,10 @@
-swagger: '2.0'
+swagger: "2.0"
 info:
   title: AG Document Library API
   version: 1.0.0
 basePath: /acquisition/cap/v1/
 paths:
-  '/search/documents/{keyword}':
+  "/search/documents/{keyword}":
     get:
       tags:
         - search-documents
@@ -16,13 +16,13 @@ paths:
           type: string
           required: true
       responses:
-        '200':
+        "200":
           description: List of search results
           schema:
             type: array
             items:
-              $ref: '#/definitions/DocLibSearchResultItem'
-  '/tag-groups/{group}':
+              $ref: "#/definitions/DocLibSearchResultItem"
+  "/tag-groups/{group}":
     get:
       tags:
         - tag-groups
@@ -34,7 +34,7 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: List of Tag Groups
           schema:
             properties:
@@ -42,24 +42,24 @@ paths:
                 description: Get a list of entities.
                 type: array
                 items:
-                  $ref: '#/definitions/TagGroups'
+                  $ref: "#/definitions/TagGroups"
             type: object
-  '/documents':
+  /documents:
     get:
       tags:
         - documents
       summary: List of documents
       responses:
-        '200':
+        "200":
           description: List of documents
           schema:
             properties:
               data:
                 type: array
                 items:
-                  $ref: '#/definitions/Documents'
+                  $ref: "#/definitions/Documents"
             type: object
-  '/documents/{id}':
+  "/documents/{id}":
     get:
       tags:
         - documents
@@ -71,14 +71,14 @@ paths:
           required: true
           type: integer
       responses:
-        '200':
+        "200":
           description: List of documents
           schema:
             properties:
               data:
                 type: array
                 items:
-                  $ref: '#/definitions/Documents'
+                  $ref: "#/definitions/Documents"
             type: object
 definitions:
   Agencies:
@@ -132,22 +132,22 @@ definitions:
       agency:
         description: Agency Name
         items:
-          $ref: '#/definitions/Agencies'
+          $ref: "#/definitions/Agencies"
       type:
         description: tags from the document type group selected for the item
         type: array
         items:
-          $ref: '#/definitions/Tag'
+          $ref: "#/definitions/Tag"
       acquisition_stage:
         description: tags from the acquisition stage group selected for the item
         type: array
         items:
-          $ref: '#/definitions/Tag'
+          $ref: "#/definitions/Tag"
       contract_type:
         description: tags from the contract type group selected for the item
         type: array
         items:
-          $ref: '#/definitions/Tag'
+          $ref: "#/definitions/Tag"
       format:
         description: Document format
         type: string
@@ -158,7 +158,7 @@ definitions:
         description: List of file objects attached to document
         type: array
         items:
-          $ref: '#/definitions/File'
+          $ref: "#/definitions/File"
       date_uploaded:
         description: UNIX timestamp of when document was uploaded/created
         type: string
@@ -166,7 +166,7 @@ definitions:
         description: List of tags associated with document
         type: array
         items:
-          $ref: '#/definitions/Tag'
+          $ref: "#/definitions/Tag"
       relevance:
         description: Relevance score from search
         type: integer
@@ -192,7 +192,7 @@ definitions:
         description: arrt-e sections
         type: array
         items:
-            $ref: '#/components/schemas/Section'
+          $ref: "#/components/schemas/Section"
   Section:
     properties:
       id:
@@ -270,7 +270,7 @@ definitions:
       agency:
         description: Agency name
         items:
-          $ref: '#/definitions/Agencies'
+          $ref: "#/definitions/Agencies"
       format:
         description: Document format
         type: string
@@ -278,17 +278,17 @@ definitions:
         description: tags from the document type group selected for the item
         type: array
         items:
-          $ref: '#/definitions/Tag'
+          $ref: "#/definitions/Tag"
       acquisition_stage:
         description: tags from the acquisition stage group selected for the item
         type: array
         items:
-          $ref: '#/definitions/Tag'
+          $ref: "#/definitions/Tag"
       contract_type:
         description: tags from the contract type group selected for the item
         type: array
         items:
-          $ref: '#/definitions/Tag'
+          $ref: "#/definitions/Tag"
       name:
         description: Document Username
         type: string
@@ -302,7 +302,7 @@ definitions:
         description: List of file objects attached to document
         type: array
         items:
-          $ref: '#/definitions/File'
+          $ref: "#/definitions/File"
       date_uploaded:
         description: UNIX timestamp of when document was uploaded/created
         type: string
@@ -310,7 +310,7 @@ definitions:
         description: List of tags associated with document
         type: array
         items:
-          $ref: '#/definitions/Tag'
+          $ref: "#/definitions/Tag"
       views:
         description: Number of times the document was viewed
         type: integer

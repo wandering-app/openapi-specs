@@ -1,60 +1,60 @@
 /v1/api/resource:
-    get:
-      tags:
-        - attachments
-      summary: Download all attachments from resource Id
-      description: Download attachments for an Resource.
-      operationId: downloadAttachmentsByResourceUsingGET
-      produces:
-        - application/json
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
+  get:
+    tags:
+      - attachments
+    summary: Download all attachments from resource Id
+    description: Download attachments for an Resource.
+    operationId: downloadAttachmentsByResourceUsingGET
+    produces:
+      - application/json
+    parameters:
+      - name: Authorization
+        in: header
+        description: Authorization
+        required: true
+        type: string
+      - name: api_key
+        in: query
+        description: api_key
+        required: true
+        type: string
+      - name: excludeDeleted
+        in: query
+        description: "excludeDeleted "
+        required: false
+        type: boolean
+        allowEmptyValue: false
+      - name: resourceId
+        in: query
+        description: "resourceId "
+        required: true
+        type: string
+        allowEmptyValue: false
+    responses:
+      "200":
+        description: OK
+        schema:
+          type: object
+      "400":
+        description: Bad Request
+        schema:
           type: string
-        - name: api_key
-          in: query
-          description: api_key
-          required: true
+      "401":
+        description: Unauthorized
+        schema:
           type: string
-        - name: excludeDeleted
-          in: query
-          description: 'excludeDeleted '
-          required: false
-          type: boolean
-          allowEmptyValue: false
-        - name: resourceId
-          in: query
-          description: 'resourceId '
-          required: true
+      "403":
+        description: Forbidden
+        schema:
           type: string
-          allowEmptyValue: false
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: object
-        '400':
-          description: Bad Request
-          schema:
-            type: string
-        '401':
-          description: Unauthorized
-          schema:
-            type: string
-        '403':
-          description: Forbidden
-          schema:
-            type: string
-        '404':
-          description: Not Found
-        '500':
-          description: Internal Server Error
-          schema:
-            type: string
-        '501':
-          description: Not Implemented
-          schema:
-            type: string
-      deprecated: false
+      "404":
+        description: Not Found
+      "500":
+        description: Internal Server Error
+        schema:
+          type: string
+      "501":
+        description: Not Implemented
+        schema:
+          type: string
+    deprecated: false

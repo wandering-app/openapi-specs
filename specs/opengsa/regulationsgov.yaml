@@ -1,9 +1,9 @@
 # ------------------
 # Disclaimer:
 # ------------------
-# This Open API specification document is work in progress. This document will continue 
+# This Open API specification document is work in progress. This document will continue
 # to be updated until our Public API v4 is finalized.
-#--------------------
+# --------------------
 openapi: 3.0.0
 info:
   title: Regulations.gov API
@@ -11,9 +11,9 @@ info:
     Public API for Regulations.gov
   version: "4.0"
 servers:
-  - url: 'https://api.regulations.gov/v4'
+  - url: "https://api.regulations.gov/v4"
     description: Production endpoint for Regulations.gov API
-security: 
+security:
   - ApiKeyAuth: []
 paths:
   /documents:
@@ -22,7 +22,7 @@ paths:
       description: This endpoint returns list of documents
       tags:
         - documents
-      parameters: 
+      parameters:
         - name: filter[agencyId]
           in: query
           description: >-
@@ -32,7 +32,7 @@ paths:
             type: string
         - name: filter[commentEndDate]
           in: query
-          description: >-  
+          description: >-
             Filters results relative to the comment end date.  The value must be formatted as `yyyy-MM-dd`.<br/><br/> Omission of a parameter modifier will match results to the exact date provided, otherwise, one of the parameter modifiers below may be used. <br/> `ge` - greater than or equal <br/> `le` - less than or equal
           required: false
           schema:
@@ -51,7 +51,7 @@ paths:
             Filters results on the specified document type.
           required: false
           schema:
-            $ref: '#/components/schemas/DocumentType'
+            $ref: "#/components/schemas/DocumentType"
         - name: filter[frDocNum]
           in: query
           description: >-
@@ -68,7 +68,7 @@ paths:
             type: string
         - name: filter[postedDate]
           in: query
-          description: >-  
+          description: >-
             Filters results relative to the posted date.  The value must be formatted as `yyyy-MM-dd`.<br/><br/> Omission of a parameter modifier will match results to the exact date provided, otherwise, one of the parameter modifiers below may be used. <br/> `ge` - greater than or equal <br/> `le` - less than or equal
           required: false
           schema:
@@ -76,12 +76,12 @@ paths:
             format: date
         - name: filter[lastModifiedDate]
           in: query
-          description: >-  
+          description: >-
             Filters results relative to the last modified date.  The value must be formatted as `yyyy-MM-dd HH:mm:ss`.<br/><br/> Omission of a parameter modifier will match results to the exact date provided, otherwise, one of the parameter modifiers below may be used. <br/> `ge` - greater than or equal <br/> `le` - less than or equal
           required: false
           schema:
             type: string
-            format: date            
+            format: date
         - name: filter[subtype]
           in: query
           description: >-
@@ -92,50 +92,50 @@ paths:
         - name: filter[withinCommentPeriod]
           in: query
           description: >-
-            Filters results for documents that are open for comment by setting the value to `true`. <br/><br/> _`False` is not an acceptable value for this parameter, hence it should be removed when not being used._          
+            Filters results for documents that are open for comment by setting the value to `true`. <br/><br/> _`False` is not an acceptable value for this parameter, hence it should be removed when not being used._
           required: false
           schema:
             type: boolean
         - name: sort
           in: query
           description: >-
-            Sorts the results on the field specified in the value.  The default behavior will sort the results in ascending order; to sort in descending order, prepend a minus sign to the value. <br/><br/> Supported values are `commentEndDate`, `postedDate`, `lastModifiedDate`, `documentId` and `title`. Multiple sort options can be passed in as a comma separated list to sort results by multiple fields.         
+            Sorts the results on the field specified in the value.  The default behavior will sort the results in ascending order; to sort in descending order, prepend a minus sign to the value. <br/><br/> Supported values are `commentEndDate`, `postedDate`, `lastModifiedDate`, `documentId` and `title`. Multiple sort options can be passed in as a comma separated list to sort results by multiple fields.
           required: false
           schema:
             type: string
         - name: page[number]
           in: query
           description: >-
-            Specifies the number for the page of results that will be returned from the query. <br/><br/> Acceptable values are numerical between, and including, 1 and 20.          
+            Specifies the number for the page of results that will be returned from the query. <br/><br/> Acceptable values are numerical between, and including, 1 and 20.
           required: false
           schema:
             type: integer
         - name: page[size]
           in: query
           description: >-
-            Specifies the size per page of results that will be returned from the query. <br/><br/> Acceptable values are numerical between, and including, 5 and 250.           
+            Specifies the size per page of results that will be returned from the query. <br/><br/> Acceptable values are numerical between, and including, 5 and 250.
           required: false
           schema:
             type: integer
       responses:
-        '200':
+        "200":
           description: A JSON\:API document with the a list of documents
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/DocumentFindAllResponse'
-        '400':
+                $ref: "#/components/schemas/DocumentFindAllResponse"
+        "400":
           description: Validation error
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
-        '403':
-           description: API key is missing or invalid
-           content:
+                $ref: "#/components/schemas/JSONError"
+        "403":
+          description: API key is missing or invalid
+          content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError' 
+                $ref: "#/components/schemas/JSONError"
   /documents/{documentId}:
     get:
       tags:
@@ -149,7 +149,7 @@ paths:
           required: true
           schema:
             type: string
-        - name: include #Only supported value for include is attachments.
+        - name: include # Only supported value for include is attachments.
           in: query
           description: resources to include
           required: false
@@ -157,37 +157,37 @@ paths:
             type: string
           example: attachments
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/DocumentFindOneResponse'
-        '400':
+                $ref: "#/components/schemas/DocumentFindOneResponse"
+        "400":
           description: Validation error
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
-        '403':
-           description: API key is missing or invalid
-           content:
+                $ref: "#/components/schemas/JSONError"
+        "403":
+          description: API key is missing or invalid
+          content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
-        '404':
+                $ref: "#/components/schemas/JSONError"
+        "404":
           description: Document not found
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
+                $ref: "#/components/schemas/JSONError"
   /comments:
     get:
       summary: List of comments
-      description: This endpoint returns list of comments 
+      description: This endpoint returns list of comments
       tags:
         - comments
-      parameters: 
+      parameters:
         - name: filter[agencyId]
           in: query
           description: >-
@@ -212,7 +212,7 @@ paths:
             format: date
         - name: filter[lastModifiedDate]
           in: query
-          description: >-  
+          description: >-
             Filters results relative to the last modified date.  The value must be formatted as `yyyy-MM-dd HH:mm:ss`.<br/><br/> Omission of a parameter modifier will match results to the exact date provided, otherwise, one of the parameter modifiers below may be used. <br/> `ge` - greater than or equal <br/> `le` - less than or equal
           required: false
           schema:
@@ -228,43 +228,43 @@ paths:
         - name: sort
           in: query
           description: >-
-            Sorts the results on the field specified in the value.  The default behavior will sort the results in ascending order; to sort in descending order, prepend a minus sign to the value. <br/><br/> The only supported values are `postedDate`, `lastModifiedDate` and `documentId`. Multiple sort options can be passed in as a comma separated list to sort results by multiple fields.          
+            Sorts the results on the field specified in the value.  The default behavior will sort the results in ascending order; to sort in descending order, prepend a minus sign to the value. <br/><br/> The only supported values are `postedDate`, `lastModifiedDate` and `documentId`. Multiple sort options can be passed in as a comma separated list to sort results by multiple fields.
           required: false
           schema:
             type: string
         - name: page[number]
           in: query
           description: >-
-            Specifies the number for the page of results that will be returned from the query. <br/><br/> Acceptable values are numerical between, and including, 1 and 20.          
+            Specifies the number for the page of results that will be returned from the query. <br/><br/> Acceptable values are numerical between, and including, 1 and 20.
           required: false
           schema:
             type: integer
         - name: page[size]
           in: query
           description: >-
-            Specifies the size per page of results that will be returned from the query. <br/><br/> Acceptable values are numerical between, and including, 5 and 250.           
+            Specifies the size per page of results that will be returned from the query. <br/><br/> Acceptable values are numerical between, and including, 5 and 250.
           required: false
           schema:
             type: integer
       responses:
-        '200':
+        "200":
           description: A JSON\:API document with the a list of comments
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/CommentFindAllResponse'
-        '400':
+                $ref: "#/components/schemas/CommentFindAllResponse"
+        "400":
           description: Validation error
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
-        '403':
-           description: API key is missing or invalid
-           content:
+                $ref: "#/components/schemas/JSONError"
+        "403":
+          description: API key is missing or invalid
+          content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
+                $ref: "#/components/schemas/JSONError"
     post:
       summary: Creates a new comment.
       tags:
@@ -275,32 +275,32 @@ paths:
         content:
           application/vnd.api+json:
             schema:
-                $ref: '#/components/schemas/JSONResourcePostRequestObject'
+              $ref: "#/components/schemas/JSONResourcePostRequestObject"
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONResourcePostResponseObject'
-        '400':
+                $ref: "#/components/schemas/JSONResourcePostResponseObject"
+        "400":
           description: Validation error
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
-        '403':
-           description: API key is missing or invalid
-           content:
+                $ref: "#/components/schemas/JSONError"
+        "403":
+          description: API key is missing or invalid
+          content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
-        '404':
+                $ref: "#/components/schemas/JSONError"
+        "404":
           description: Document not found
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
+                $ref: "#/components/schemas/JSONError"
   /comments/{commentId}:
     get:
       summary: Get detailed information for specified commentId
@@ -314,41 +314,41 @@ paths:
           required: true
           schema:
             type: string
-        - name: include #Only supported value for include is attachments.
+        - name: include # Only supported value for include is attachments.
           in: query
           description: resources to include
           example: attachments
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/CommentFindOneResponse'
-        '400':
+                $ref: "#/components/schemas/CommentFindOneResponse"
+        "400":
           description: Validation error
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
-        '403':
-           description: API key is missing or invalid
-           content:
+                $ref: "#/components/schemas/JSONError"
+        "403":
+          description: API key is missing or invalid
+          content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
-        '404':
+                $ref: "#/components/schemas/JSONError"
+        "404":
           description: Document not found
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
+                $ref: "#/components/schemas/JSONError"
   /dockets:
     get:
       summary: List of dockets
-      description: This endpoint returns list of dockets 
+      description: This endpoint returns list of dockets
       tags:
         - dockets
       parameters:
@@ -368,7 +368,7 @@ paths:
             type: string
         - name: filter[lastModifiedDate]
           in: query
-          description: >-  
+          description: >-
             Filters results relative to the last modified date.  The value must be formatted as `yyyy-MM-dd HH:mm:ss`.<br/><br/> Omission of a parameter modifier will match results to the exact date provided, otherwise, one of the parameter modifiers below may be used. <br/> `ge` - greater than or equal <br/> `le` - less than or equal
           required: false
           schema:
@@ -380,47 +380,47 @@ paths:
             Filters results on the specified docket type.
           required: false
           schema:
-            $ref: '#/components/schemas/DocketType'
+            $ref: "#/components/schemas/DocketType"
         - name: sort
           in: query
           description: >-
-            Sorts the results on the field specified in the value.  The default behavior will sort the results in ascending order; to sort in descending order, prepend a minus sign to the value. <br/><br/> The only supported values are `title`, `docketId` and `lastModifiedDate`. Multiple sort options can be passed in as a comma separated list to sort results by multiple fields.          
+            Sorts the results on the field specified in the value.  The default behavior will sort the results in ascending order; to sort in descending order, prepend a minus sign to the value. <br/><br/> The only supported values are `title`, `docketId` and `lastModifiedDate`. Multiple sort options can be passed in as a comma separated list to sort results by multiple fields.
           required: false
           schema:
             type: string
         - name: page[number]
           in: query
           description: >-
-            Specifies the number for the page of results that will be returned from the query. <br/><br/> Acceptable values are numerical between, and including, 1 and 20.          
+            Specifies the number for the page of results that will be returned from the query. <br/><br/> Acceptable values are numerical between, and including, 1 and 20.
           required: false
           schema:
             type: integer
         - name: page[size]
           in: query
           description: >-
-            Specifies the size per page of results that will be returned from the query. <br/><br/> Acceptable values are numerical between, and including, 5 and 250.           
+            Specifies the size per page of results that will be returned from the query. <br/><br/> Acceptable values are numerical between, and including, 5 and 250.
           required: false
           schema:
             type: integer
       responses:
-        '200':
+        "200":
           description: A JSON\:API document with the a list of dockets
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/DocketFindAllResponse'
-        '400':
+                $ref: "#/components/schemas/DocketFindAllResponse"
+        "400":
           description: Validation error
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
-        '403':
-           description: API key is missing or invalid
-           content:
+                $ref: "#/components/schemas/JSONError"
+        "403":
+          description: API key is missing or invalid
+          content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
+                $ref: "#/components/schemas/JSONError"
   /dockets/{docketId}:
     get:
       tags:
@@ -435,30 +435,30 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/DocketFindOneResponse'
-        '400':
+                $ref: "#/components/schemas/DocketFindOneResponse"
+        "400":
           description: Validation error
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
-        '403':
-           description: API key is missing or invalid
-           content:
+                $ref: "#/components/schemas/JSONError"
+        "403":
+          description: API key is missing or invalid
+          content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
-        '404':
+                $ref: "#/components/schemas/JSONError"
+        "404":
           description: Document not found
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
+                $ref: "#/components/schemas/JSONError"
   /agency-categories:
     get:
       summary: Returns a list of categories
@@ -474,13 +474,13 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: List of agency categories
           content:
             application/vnd.api+json:
-             schema: # TODO: Pull this object out into a component
-                type: object 
-                properties: 
+              schema: # TODO: Pull this object out into a component
+                type: object
+                properties:
                   data:
                     type: array
                     items:
@@ -495,18 +495,18 @@ paths:
                         categories:
                           type: string
                           description: The name of the category
-        '400':
+        "400":
           description: Validation error
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
-        '403':
-           description: API key is missing or invalid
-           content:
+                $ref: "#/components/schemas/JSONError"
+        "403":
+          description: API key is missing or invalid
+          content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
+                $ref: "#/components/schemas/JSONError"
   /submission-keys:
     post:
       summary: Creates the unique submission key
@@ -514,7 +514,7 @@ paths:
       tags:
         - comment submission utilities
       requestBody:
-        content: 
+        content:
           application/vnd.api+json:
             schema:
               type: object
@@ -524,9 +524,9 @@ paths:
                   properties:
                     type:
                       type: string
-                      example: 'submissionKeys'
+                      example: submissionKeys
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/vnd.api+json:
@@ -536,29 +536,29 @@ paths:
                   data:
                     type: object
                     properties:
-                        id:
-                          type: string
-                          description: the newly created submission key
-                        type:
-                          type: string
-                          example: 'submission-keys'
-                        links:
-                          $ref: '#/components/schemas/SelfLink'
-        '403':
-           description: API key is missing or invalid
-           content:
+                      id:
+                        type: string
+                        description: the newly created submission key
+                      type:
+                        type: string
+                        example: submission-keys
+                      links:
+                        $ref: "#/components/schemas/SelfLink"
+        "403":
+          description: API key is missing or invalid
+          content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'      
+                $ref: "#/components/schemas/JSONError"
   /file-upload-urls:
     post:
       summary: Creates a presigned url to upload file
       tags:
         - comment submission utilities
-      description: 'Returns a pre-signed URL to upload a file to the S3 bucket'
+      description: Returns a pre-signed URL to upload a file to the S3 bucket
       requestBody:
         required: true
-        content: 
+        content:
           application/vnd.api+json:
             schema:
               type: object
@@ -568,10 +568,10 @@ paths:
                   properties:
                     type:
                       type: string
-                      example: 'file-upload-urls'
+                      example: file-upload-urls
                     attributes:
                       type: object
-                      properties: 
+                      properties:
                         submissionKey:
                           type: string
                           description: submission key for the submission
@@ -582,7 +582,7 @@ paths:
                           type: string
                           description: content type of the file
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/vnd.api+json:
@@ -598,10 +598,10 @@ paths:
                         description: The pre-signed url to upload the file
                       type:
                         type: string
-                        example: 'file-upload-urls'
+                        example: file-upload-urls
                       attributes:
                         type: object
-                        properties: 
+                        properties:
                           submissionKey:
                             type: string
                             description: submission key for the submission
@@ -611,26 +611,26 @@ paths:
                           contentType:
                             type: string
                             description: content type of the file
-        '400':
+        "400":
           description: Validation error
           content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
-        '403':
-           description: API key is missing or invalid
-           content:
+                $ref: "#/components/schemas/JSONError"
+        "403":
+          description: API key is missing or invalid
+          content:
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/JSONError'
+                $ref: "#/components/schemas/JSONError"
 components:
   securitySchemes:
-    ApiKeyAuth:          # arbitrary name for the security scheme
-        type: apiKey
-        in: header       # can be "header", "query" or "cookie"
-        name: X-Api-Key  # name of the header, query parameter or cookie
+    ApiKeyAuth: # arbitrary name for the security scheme
+      type: apiKey
+      in: header       # can be "header", "query" or "cookie"
+      name: X-Api-Key  # name of the header, query parameter or cookie
   schemas:
-    #JSON:API Specific documentation
+    # JSON:API Specific documentation
     DocumentFindAllResponse:
       description: A JSON:API document with a list of resources
       properties:
@@ -639,9 +639,9 @@ components:
           type: array
           uniqueItems: true
           items:
-            $ref: '#/components/schemas/DocumentFindAllItem'
+            $ref: "#/components/schemas/DocumentFindAllItem"
         meta:
-          $ref: '#/components/schemas/FindAllResponseMetadata'
+          $ref: "#/components/schemas/FindAllResponseMetadata"
     CommentFindAllResponse:
       description: A JSON:API document with a list of resources
       properties:
@@ -650,9 +650,9 @@ components:
           type: array
           uniqueItems: true
           items:
-            $ref: '#/components/schemas/CommentFindAllItem'
+            $ref: "#/components/schemas/CommentFindAllItem"
         meta:
-          $ref: '#/components/schemas/FindAllResponseMetadata'
+          $ref: "#/components/schemas/FindAllResponseMetadata"
     DocketFindAllResponse:
       description: A JSON:API document with a list of resources
       properties:
@@ -661,9 +661,9 @@ components:
           type: array
           uniqueItems: true
           items:
-            $ref: '#/components/schemas/DocketFindAllItem'
+            $ref: "#/components/schemas/DocketFindAllItem"
         meta:
-          $ref: '#/components/schemas/FindAllResponseMetadata'
+          $ref: "#/components/schemas/FindAllResponseMetadata"
     DocumentFindAllItem:
       description: A JSON:API document which represents a single document in the list
       properties:
@@ -673,12 +673,12 @@ components:
         type:
           description: The JSON:API resource type `documents`
           type: string
-        attributes: 
-          $ref: '#/components/schemas/Document'
-        links: 
+        attributes:
+          $ref: "#/components/schemas/Document"
+        links:
           type: array
           items:
-            $ref: '#/components/schemas/SelfLink'
+            $ref: "#/components/schemas/SelfLink"
     CommentFindAllItem:
       description: A JSON:API document which represents a single document in the list
       properties:
@@ -688,12 +688,12 @@ components:
         type:
           description: The JSON:API resource type `comments`
           type: string
-        attributes: 
-          $ref: '#/components/schemas/Comment'
-        links: 
+        attributes:
+          $ref: "#/components/schemas/Comment"
+        links:
           type: array
           items:
-            $ref: '#/components/schemas/SelfLink'
+            $ref: "#/components/schemas/SelfLink"
     DocketFindAllItem:
       description: A JSON:API document which represents a single document in the list
       properties:
@@ -703,12 +703,12 @@ components:
         type:
           description: The JSON:API resource type `dockets`
           type: string
-        attributes: 
-          $ref: '#/components/schemas/Docket'
-        links: 
+        attributes:
+          $ref: "#/components/schemas/Docket"
+        links:
           type: array
           items:
-            $ref: '#/components/schemas/SelfLink'
+            $ref: "#/components/schemas/SelfLink"
     AttachmentFindAllItem:
       description: A JSON:API document which represents a single document in the list
       properties:
@@ -718,12 +718,12 @@ components:
         type:
           description: The JSON:API resource type `attachments`
           type: string
-        attributes: 
-          $ref: '#/components/schemas/Attachment'
-        links: 
+        attributes:
+          $ref: "#/components/schemas/Attachment"
+        links:
           type: array
           items:
-            $ref: '#/components/schemas/SelfLink'
+            $ref: "#/components/schemas/SelfLink"
     FindAllResponseMetadata:
       description: A JSON:API document
       properties:
@@ -733,7 +733,7 @@ components:
           type: boolean
         numberOfElements:
           type: integer
-        pageNumber: 
+        pageNumber:
           type: integer
         pageSize:
           type: integer
@@ -755,46 +755,46 @@ components:
         type:
           description: The JSON:API resource type `documents`
           type: string
-        attributes: 
+        attributes:
           $ref: "#/components/schemas/DocumentDetail"
         relationships:
           $ref: "#/components/schemas/Relationship"
-        links: 
+        links:
           type: array
           items:
-            $ref: '#/components/schemas/SelfLink'
+            $ref: "#/components/schemas/SelfLink"
         included:
           description: The list of documents where each document is a JSON:API document
           type: array
           uniqueItems: true
           items:
-            $ref: '#/components/schemas/AttachmentFindAllItem'
+            $ref: "#/components/schemas/AttachmentFindAllItem"
     CommentFindOneResponse:
       description: A JSON:API document which represents a single document
       type: object
       properties:
         id:
-          description: The JSON:API resource ID (documentId of the comment). DocumentId field is always returned in JSON response. This is an agency configurable field. Each agency has option to configure the format of the field. 
+          description: The JSON:API resource ID (documentId of the comment). DocumentId field is always returned in JSON response. This is an agency configurable field. Each agency has option to configure the format of the field.
           type: string
         type:
           description: The JSON:API resource type `comments`
           type: string
-        attributes: 
+        attributes:
           $ref: "#/components/schemas/CommentDetail"
         relationships:
           type: array
           items:
             $ref: "#/components/schemas/Relationship"
-        links: 
+        links:
           type: array
           items:
-            $ref: '#/components/schemas/SelfLink'
+            $ref: "#/components/schemas/SelfLink"
         included:
           description: The list of documents where each document is a JSON:API document
           type: array
           uniqueItems: true
           items:
-            $ref: '#/components/schemas/AttachmentFindAllItem'
+            $ref: "#/components/schemas/AttachmentFindAllItem"
     DocketFindOneResponse:
       description: A JSON:API document which represents a single document
       type: object
@@ -805,12 +805,12 @@ components:
         type:
           description: The JSON:API resource type `dockets`
           type: string
-        attributes: 
+        attributes:
           $ref: "#/components/schemas/DocketDetail"
-        links: 
+        links:
           type: array
           items:
-            $ref: '#/components/schemas/SelfLink'
+            $ref: "#/components/schemas/SelfLink"
     Relationship:
       description: A single relationship object
       type: object
@@ -859,7 +859,7 @@ components:
         type:
           description: The JSON:API resource type `comments`
           type: string
-        attributes: 
+        attributes:
           type: object
           oneOf:
             - $ref: "#/components/schemas/IndividualComment"
@@ -885,8 +885,8 @@ components:
           description: List of JSON:API Error
           type: array
           items:
-            $ref: "#/components/schemas/Error" 
-    #Regulations.gov documentation        
+            $ref: "#/components/schemas/Error"
+    # Regulations.gov documentation
     DocumentType:
       type: string
       description: type of document. This field is always returned in JSON response
@@ -901,7 +901,7 @@ components:
       description: the type of docket
       enum:
         - Rulemaking
-        - Nonrulemaking 
+        - Nonrulemaking
     SubmitterType:
       type: string
       description: the submitter type
@@ -911,7 +911,7 @@ components:
         - Organization
     FileFormat:
       type: object
-      properties: 
+      properties:
         fileUrl:
           type: string
           description: URL of the file on S3
@@ -921,7 +921,7 @@ components:
         size:
           type: integer
           description: The file size
-    #Relationship model for attachments
+    # Relationship model for attachments
     Attachment:
       type: object
       properties:
@@ -943,7 +943,7 @@ components:
           type: array
           description: list of file formats
           items:
-              $ref: '#/components/schemas/FileFormat'
+            $ref: "#/components/schemas/FileFormat"
         modifyDate:
           type: string
           format: date-time
@@ -960,10 +960,10 @@ components:
         title:
           type: string
           description: The formal title of the attachment
-    #Search components     
+    # Search components
     Document:
       type: object
-      properties: 
+      properties:
         agencyId:
           type: string
           description: The acronym used to abbreviate the name of the agency associated with the document.
@@ -981,7 +981,7 @@ components:
           type: string
           description: The ID of the docket to which the document corresponds.
         documentType:
-          $ref: '#/components/schemas/DocumentType'
+          $ref: "#/components/schemas/DocumentType"
         frDocNum:
           type: string
           description: The federal register document number of the document.
@@ -1019,7 +1019,7 @@ components:
           type: string
           description: The acronym used to abbreviate the name of the agency associated with the document.
         documentType:
-          $ref: '#/components/schemas/DocumentType'
+          $ref: "#/components/schemas/DocumentType"
         highlightedContent:
           type: string
           nullable: true
@@ -1047,7 +1047,7 @@ components:
           type: string
           description: The acronym used to abbreviate the name of the agency associated with the docket.
         docketType:
-          $ref: '#/components/schemas/DocketType'
+          $ref: "#/components/schemas/DocketType"
         highlightedContent:
           type: string
           nullable: true
@@ -1062,14 +1062,14 @@ components:
         title:
           type: string
           description: The formal title of the docket.
-    #Detail components
+    # Detail components
     BasicDetailModel:
       type: object
       properties:
         address1:
           type: string
           nullable: true
-          description: The first line of the submitter's address. 
+          description: The first line of the submitter's address.
         address2:
           type: string
           nullable: true
@@ -1097,9 +1097,9 @@ components:
           description: The detailed description of the document. This is an agency configurable field. An agency can configure this field to make it not publicly accessible.
         docketId:
           type: string
-          description: The ID of the docket to which the document corresponds. This field is always returned in JSON response. 
+          description: The ID of the docket to which the document corresponds. This field is always returned in JSON response.
         documentType:
-          $ref: '#/components/schemas/DocumentType'
+          $ref: "#/components/schemas/DocumentType"
         email:
           type: string
           nullable: true
@@ -1120,7 +1120,7 @@ components:
           type: array
           description: list of file formats
           items:
-            $ref: '#/components/schemas/FileFormat'
+            $ref: "#/components/schemas/FileFormat"
         firstName:
           type: string
           nullable: true
@@ -1210,12 +1210,12 @@ components:
           type: string
           description: The zip associated with the submitter's address. This is an agency configurable field. An agency can configure this field to make it not publicly accessible.
     DocumentDetail:
-      allOf:     # Combines the BasicDetailModel and the inline model
-        - $ref: '#/components/schemas/BasicDetailModel'
+      allOf: # Combines the BasicDetailModel and the inline model
+        - $ref: "#/components/schemas/BasicDetailModel"
         - type: object
           required:
             - documentId
-          properties: 
+          properties:
             additionalRins:
               type: array
               nullable: true
@@ -1315,13 +1315,13 @@ components:
               items:
                 type: string
               description: The principal topics to which the document pertains.
-    CommentDetail: 
-      allOf:     # Combines the BasicDetailModel and the inline model
-        - $ref: '#/components/schemas/BasicDetailModel'
+    CommentDetail:
+      allOf: # Combines the BasicDetailModel and the inline model
+        - $ref: "#/components/schemas/BasicDetailModel"
         - type: object
           required:
             - documentId
-          properties: 
+          properties:
             commentOnDocumentId:
               type: string
               description: documentId of the parent document. This field is always returned in JSON response.
@@ -1342,7 +1342,7 @@ components:
           type: string
           description: The detailed description of the docket.
         docketType:
-          $ref: '#/components/schemas/DocketType'
+          $ref: "#/components/schemas/DocketType"
         effectiveDate:
           type: string
           format: date-time
@@ -1407,13 +1407,13 @@ components:
         title:
           type: string
           description: A name or descriptive heading given to an agency's docket.
-    #Comment Submission Related components
+    # Comment Submission Related components
     BaseCommentPayload:
       type: object
       required:
         - comment
         - commentOnDocumentId
-        - submissionType #user should set submission Type to API
+        - submissionType # user should set submission Type to API
       properties:
         category:
           type: string
@@ -1436,7 +1436,7 @@ components:
             description: The names of the files submitted with the submission
         numItemsReceived:
           type: integer
-          description: The number of items included in the submission          
+          description: The number of items included in the submission
         sendEmailReceipt:
           type: boolean
           description: Conveys if the user would like to receive an email receipt for the comment
@@ -1445,10 +1445,10 @@ components:
           description: The unique identifier associated with the submission
         submissionType:
           type: string
-          description: The submitter type - Its always going to be `API` for comments submitted via API 
+          description: The submitter type - Its always going to be `API` for comments submitted via API
     IndividualComment:
-      allOf:     # Combines the BasicCommentPayLoad and the inline model
-        - $ref: '#/components/schemas/BaseCommentPayload'
+      allOf: # Combines the BasicCommentPayLoad and the inline model
+        - $ref: "#/components/schemas/BaseCommentPayload"
         - type: object
           required:
             - submitterType
@@ -1479,15 +1479,15 @@ components:
               type: string
               maxLength: 50
               description: The email associated with the submitter's address.
-            submitterType: #submitter type should be set to Individual
-              $ref: '#/components/schemas/SubmitterType'
+            submitterType: # submitter type should be set to Individual
+              $ref: "#/components/schemas/SubmitterType"
             zip:
               type: string
               maxLength: 10
               description: The zip associated with the submitter's address.
-    OrganizationComment: 
-      allOf:     # Combines the BasicCommentPayLoad and the inline model
-        - $ref: '#/components/schemas/BaseCommentPayload'
+    OrganizationComment:
+      allOf: # Combines the BasicCommentPayLoad and the inline model
+        - $ref: "#/components/schemas/BaseCommentPayload"
         - type: object
           required:
             - submitterType
@@ -1497,40 +1497,40 @@ components:
             organization:
               type: string
               maxLength: 120
-              description: The organization that the submitter represents.          
+              description: The organization that the submitter represents.
             organizationType:
               type: string
-              description: The agency specific organization type that the submitter represents.          
-            submitterType: #submitter type should be set to Organization
-              $ref: '#/components/schemas/SubmitterType'
-    AnonymousComment: 
-      allOf:     # Combines the BasicCommentPayLoad and the inline model
-        - $ref: '#/components/schemas/BaseCommentPayload'
+              description: The agency specific organization type that the submitter represents.
+            submitterType: # submitter type should be set to Organization
+              $ref: "#/components/schemas/SubmitterType"
+    AnonymousComment:
+      allOf: # Combines the BasicCommentPayLoad and the inline model
+        - $ref: "#/components/schemas/BaseCommentPayload"
         - type: object
           required:
             - submitterType
-          properties: 
-            submitterType: #submitter type should be set to Anonymous
-              $ref: '#/components/schemas/SubmitterType'
+          properties:
+            submitterType: # submitter type should be set to Anonymous
+              $ref: "#/components/schemas/SubmitterType"
     CommentPostResponse:
       allOf:
-        - oneOf:     # Returns the created comment
-          - $ref: '#/components/schemas/IndividualComment'
-          - $ref: '#/components/schemas/OrganizationComment'
-          - $ref: '#/components/schemas/AnonymousComment'
+        - oneOf: # Returns the created comment
+            - $ref: "#/components/schemas/IndividualComment"
+            - $ref: "#/components/schemas/OrganizationComment"
+            - $ref: "#/components/schemas/AnonymousComment"
         - type: object
           properties:
             numItemsReceived:
               type: integer
-              description: The number of items included in the submission          
-            receiveDate: 
+              description: The number of items included in the submission
+            receiveDate:
               type: string
               description: The date comment was received.
     Error:
       type: object
       properties:
         status:
-          type: integer #http status code
+          type: integer # http status code
         title:
           type: string
         detail:

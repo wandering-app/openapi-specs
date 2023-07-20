@@ -1,58 +1,58 @@
 /v1/api/history/{opportunityId}:
-    get:
-      tags:
-        - Opportunity
-      summary: Get history of Opportunity
-      operationId: getOpportunityHistoryUsingGET
-      produces:
-        - application/json
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
+  get:
+    tags:
+      - Opportunity
+    summary: Get history of Opportunity
+    operationId: getOpportunityHistoryUsingGET
+    produces:
+      - application/json
+    parameters:
+      - name: Authorization
+        in: header
+        description: Authorization
+        required: true
+        type: string
+      - name: api_key
+        in: query
+        description: api_key
+        required: true
+        type: string
+      - name: opportunityId
+        in: path
+        description: opportunityId
+        required: true
+        type: string
+      - name: postedFrom
+        in: query
+        description: postedFrom
+        required: false
+        type: string
+        allowEmptyValue: false
+    responses:
+      "200":
+        description: OK
+        schema:
+          type: object
+      "400":
+        description: Bad Request
+        schema:
           type: string
-        - name: api_key
-          in: query
-          description: api_key
-          required: true
+      "401":
+        description: Unauthorized
+        schema:
           type: string
-        - name: opportunityId
-          in: path
-          description: opportunityId
-          required: true
+      "403":
+        description: Forbidden
+        schema:
           type: string
-        - name: postedFrom
-          in: query
-          description: postedFrom
-          required: false
+      "404":
+        description: Not Found
+      "500":
+        description: Internal Server Error
+        schema:
           type: string
-          allowEmptyValue: false
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: object
-        '400':
-          description: Bad Request
-          schema:
-            type: string
-        '401':
-          description: Unauthorized
-          schema:
-            type: string
-        '403':
-          description: Forbidden
-          schema:
-            type: string
-        '404':
-          description: Not Found
-        '500':
-          description: Internal Server Error
-          schema:
-            type: string
-        '501':
-          description: Not Implemented
-          schema:
-            type: string
-      deprecated: false
+      "501":
+        description: Not Implemented
+        schema:
+          type: string
+    deprecated: false

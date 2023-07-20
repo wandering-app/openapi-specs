@@ -1,53 +1,53 @@
 /v1/api/{opportunityId}/resources/download/zip:
-    get:
-      tags:
-        - attachments
-      summary: Download Opportunity's attachments as zip
-      description: Download Opportunity's attachments as zip.
-      operationId: downloadAttachmentsAsZipUsingGET
-      produces:
-        - application/zip
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
+  get:
+    tags:
+      - attachments
+    summary: Download Opportunity's attachments as zip
+    description: Download Opportunity's attachments as zip.
+    operationId: downloadAttachmentsAsZipUsingGET
+    produces:
+      - application/zip
+    parameters:
+      - name: Authorization
+        in: header
+        description: Authorization
+        required: true
+        type: string
+      - name: api_key
+        in: query
+        description: api_key
+        required: true
+        type: string
+      - name: opportunityId
+        in: path
+        description: opportunityId
+        required: true
+        type: string
+    responses:
+      "200":
+        description: OK
+        schema:
+          type: object
+      "400":
+        description: Bad Request
+        schema:
           type: string
-        - name: api_key
-          in: query
-          description: api_key
-          required: true
+      "401":
+        description: Unauthorized
+        schema:
           type: string
-        - name: opportunityId
-          in: path
-          description: opportunityId
-          required: true
+      "403":
+        description: Forbidden
+        schema:
           type: string
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: object
-        '400':
-          description: Bad Request
-          schema:
-            type: string
-        '401':
-          description: Unauthorized
-          schema:
-            type: string
-        '403':
-          description: Forbidden
-          schema:
-            type: string
-        '404':
-          description: Not Found
-        '500':
-          description: Internal Server Error
-          schema:
-            type: string
-        '501':
-          description: Not Implemented
-          schema:
-            type: string
-      deprecated: false
+      "404":
+        description: Not Found
+      "500":
+        description: Internal Server Error
+        schema:
+          type: string
+      "501":
+        description: Not Implemented
+        schema:
+          type: string
+    deprecated: false

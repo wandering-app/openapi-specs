@@ -1,63 +1,63 @@
- /v1/api/isSolicitationNumberUnique/{parent}/{solicitationNumber}/{type}:
-    get:
-      tags:
-        - Opportunity
-      summary: 'Check if solicitation number is unique. A solicitation number is unique if it is not used by another opportunity of equivalent type. For justification type, j&a and fair opportunity/limited sources justification are considered equivalent.'
-      operationId: getOpportunityHistoryUsingGET_1
-      produces:
-        - application/json
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
+/v1/api/isSolicitationNumberUnique/{parent}/{solicitationNumber}/{type}:
+  get:
+    tags:
+      - Opportunity
+    summary: "Check if solicitation number is unique. A solicitation number is unique if it is not used by another opportunity of equivalent type. For justification type, j&a and fair opportunity/limited sources justification are considered equivalent."
+    operationId: getOpportunityHistoryUsingGET_1
+    produces:
+      - application/json
+    parameters:
+      - name: Authorization
+        in: header
+        description: Authorization
+        required: true
+        type: string
+      - name: api_key
+        in: query
+        description: api_key
+        required: true
+        type: string
+      - name: parent
+        in: query
+        description: parent
+        required: false
+        type: string
+        allowEmptyValue: false
+      - name: solicitationNumber
+        in: path
+        description: solicitationNumber
+        required: true
+        type: string
+      - name: type
+        in: path
+        description: type
+        required: true
+        type: string
+    responses:
+      "200":
+        description: OK
+        schema:
+          type: object
+      "400":
+        description: Bad Request
+        schema:
           type: string
-        - name: api_key
-          in: query
-          description: api_key
-          required: true
+      "401":
+        description: Unauthorized
+        schema:
           type: string
-        - name: parent
-          in: query
-          description: parent
-          required: false
+      "403":
+        description: Forbidden
+        schema:
           type: string
-          allowEmptyValue: false
-        - name: solicitationNumber
-          in: path
-          description: solicitationNumber
-          required: true
+      "404":
+        description: Not Found
+      "500":
+        description: Internal Server Error
+        schema:
           type: string
-        - name: type
-          in: path
-          description: type
-          required: true
+      "501":
+        description: Not Implemented
+        schema:
           type: string
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: object
-        '400':
-          description: Bad Request
-          schema:
-            type: string
-        '401':
-          description: Unauthorized
-          schema:
-            type: string
-        '403':
-          description: Forbidden
-          schema:
-            type: string
-        '404':
-          description: Not Found
-        '500':
-          description: Internal Server Error
-          schema:
-            type: string
-        '501':
-          description: Not Implemented
-          schema:
-            type: string
-      deprecated: false
+    deprecated: false
