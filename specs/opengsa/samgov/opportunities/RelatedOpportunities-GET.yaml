@@ -1,81 +1,81 @@
- /v1/api/opportunities/{opportunityId}/relatedopportunities/{type}:
-    get:
-      tags:
-        - Opportunity
-      summary: Get related contract opportunities
-      operationId: getRelatedOpportunitiesGET
-      produces:
-        - application/json
-      parameters:
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
+/v1/api/opportunities/{opportunityId}/relatedopportunities/{type}:
+  get:
+    tags:
+      - Opportunity
+    summary: Get related contract opportunities
+    operationId: getRelatedOpportunitiesGET
+    produces:
+      - application/json
+    parameters:
+      - name: Authorization
+        in: header
+        description: Authorization
+        required: true
+        type: string
+      - name: api_key
+        in: query
+        description: api_key
+        required: true
+        type: string
+      - name: opportunityId
+        in: path
+        description: opportunityId
+        required: true
+        type: string
+      - name: page
+        in: query
+        description: page
+        required: false
+        type: integer
+        default: 0
+        format: int32
+        allowEmptyValue: false
+      - name: size
+        in: query
+        description: size
+        required: false
+        type: integer
+        default: 10
+        format: int32
+        allowEmptyValue: false
+      - name: sortBy
+        in: query
+        description: sortBy
+        required: false
+        type: string
+        default: -modifiedOn
+        allowEmptyValue: false
+      - name: type
+        in: path
+        description: type
+        required: true
+        type: string
+    responses:
+      "200":
+        description: OK
+        schema:
+          type: object
+      "400":
+        description: Bad Request
+        schema:
           type: string
-        - name: api_key
-          in: query
-          description: api_key
-          required: true
+      "401":
+        description: Unauthorized
+        schema:
           type: string
-        - name: opportunityId
-          in: path
-          description: opportunityId
-          required: true
+      "403":
+        description: Forbidden
+        schema:
           type: string
-        - name: page
-          in: query
-          description: page
-          required: false
-          type: integer
-          default: 0
-          format: int32
-          allowEmptyValue: false
-        - name: size
-          in: query
-          description: size
-          required: false
-          type: integer
-          default: 10
-          format: int32
-          allowEmptyValue: false
-        - name: sortBy
-          in: query
-          description: sortBy
-          required: false
+      "404":
+        description: Not Found
+      "500":
+        description: Internal Server Error
+        schema:
           type: string
-          default: '-modifiedOn'
-          allowEmptyValue: false
-        - name: type
-          in: path
-          description: type
-          required: true
+      "501":
+        description: Not Implemented
+        schema:
           type: string
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: object
-        '400':
-          description: Bad Request
-          schema:
-            type: string
-        '401':
-          description: Unauthorized
-          schema:
-            type: string
-        '403':
-          description: Forbidden
-          schema:
-            type: string
-        '404':
-          description: Not Found
-        '500':
-          description: Internal Server Error
-          schema:
-            type: string
-        '501':
-          description: Not Implemented
-          schema:
-            type: string
-      deprecated: false
+    deprecated: false
  

@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  version: "1.0.0"
+  version: 1.0.0
   title: API Umbrella Admin API
   description: |-
     The admin API is accessible via `/api-umbrella/v1`. In order to access this API, you must pass:
@@ -76,7 +76,7 @@ parameters:
     description: Size of array
     required: false
     type: string
-    enum: ["asc", "desc"]
+    enum: [asc, desc]
   datatables-columns-data:
     name: columns[i][data]
     in: query
@@ -100,14 +100,14 @@ paths:
 
         This API's query parameters and responses are intended to be compatible with the [DataTables server-side processing API](https://datatables.net/manual/server-side).
       parameters:
-        - $ref: '#/parameters/json-csv-format'
-        - $ref: '#/parameters/datatables-start'
-        - $ref: '#/parameters/datatables-length'
-        - $ref: '#/parameters/datatables-search-value'
-        - $ref: '#/parameters/datatables-order-column'
-        - $ref: '#/parameters/datatables-order-dir'
-        - $ref: '#/parameters/datatables-columns-data'
-        - $ref: '#/parameters/datatables-columns-name'
+        - $ref: "#/parameters/json-csv-format"
+        - $ref: "#/parameters/datatables-start"
+        - $ref: "#/parameters/datatables-length"
+        - $ref: "#/parameters/datatables-search-value"
+        - $ref: "#/parameters/datatables-order-column"
+        - $ref: "#/parameters/datatables-order-dir"
+        - $ref: "#/parameters/datatables-columns-data"
+        - $ref: "#/parameters/datatables-columns-name"
       responses:
         200:
           description: Successful response
@@ -124,13 +124,13 @@ paths:
               data:
                 type: array
                 items:
-                  $ref: '#/definitions/AdminGroup'
+                  $ref: "#/definitions/AdminGroup"
     post:
       tags:
         - admin_group
       summary: Create a new admin group.
       parameters:
-        - $ref: '#/parameters/json-format'
+        - $ref: "#/parameters/json-format"
         - in: body
           name: body
           description: AdminGroup object to create
@@ -152,7 +152,7 @@ paths:
         required: true
         type: string
         format: uuid
-      - $ref: '#/parameters/json-format'
+      - $ref: "#/parameters/json-format"
     get:
       tags:
         - admin_group
@@ -166,7 +166,7 @@ paths:
             properties:
               admin_group:
                 type: object
-                $ref: '#/definitions/AdminGroup'
+                $ref: "#/definitions/AdminGroup"
     put:
       tags:
         - admin_group
@@ -194,7 +194,7 @@ paths:
           description: Successfully deleted record
   /api-umbrella/v1/admin_permissions.{format}:
     parameters:
-      - $ref: '#/parameters/json-format'
+      - $ref: "#/parameters/json-format"
     get:
       tags:
         - admin_permission
@@ -229,14 +229,14 @@ paths:
 
         This API's query parameters and responses are intended to be compatible with the [DataTables server-side processing API](https://datatables.net/manual/server-side).
       parameters:
-        - $ref: '#/parameters/json-csv-format'
-        - $ref: '#/parameters/datatables-start'
-        - $ref: '#/parameters/datatables-length'
-        - $ref: '#/parameters/datatables-search-value'
-        - $ref: '#/parameters/datatables-order-column'
-        - $ref: '#/parameters/datatables-order-dir'
-        - $ref: '#/parameters/datatables-columns-data'
-        - $ref: '#/parameters/datatables-columns-name'
+        - $ref: "#/parameters/json-csv-format"
+        - $ref: "#/parameters/datatables-start"
+        - $ref: "#/parameters/datatables-length"
+        - $ref: "#/parameters/datatables-search-value"
+        - $ref: "#/parameters/datatables-order-column"
+        - $ref: "#/parameters/datatables-order-dir"
+        - $ref: "#/parameters/datatables-columns-data"
+        - $ref: "#/parameters/datatables-columns-name"
       responses:
         200:
           description: Successful response
@@ -253,13 +253,13 @@ paths:
               data:
                 type: array
                 items:
-                  $ref: '#/definitions/Admin'
+                  $ref: "#/definitions/Admin"
     post:
       tags:
         - admin
       summary: Create a new admin account.
       parameters:
-        - $ref: '#/parameters/json-format'
+        - $ref: "#/parameters/json-format"
         - in: body
           name: body
           description: Admin object to create
@@ -281,7 +281,7 @@ paths:
         required: true
         type: string
         format: uuid
-      - $ref: '#/parameters/json-format'
+      - $ref: "#/parameters/json-format"
     get:
       tags:
         - admin
@@ -295,7 +295,7 @@ paths:
             properties:
               admin:
                 type: object
-                $ref: '#/definitions/Admin'
+                $ref: "#/definitions/Admin"
     put:
       tags:
         - admin
@@ -323,7 +323,7 @@ paths:
           description: Successfully deleted record
   /api-umbrella/v1/analytics/drilldown.{format}:
     parameters:
-      - $ref: '#/parameters/json-csv-format'
+      - $ref: "#/parameters/json-csv-format"
     get:
       tags:
         - analytics
@@ -347,7 +347,7 @@ paths:
           in: query
           required: true
           type: string
-          enum: ["month", "week", "day", "hour", "minute"]
+          enum: [month, week, day, hour, minute]
         - name: query
           in: query
           required: false
@@ -402,7 +402,7 @@ paths:
                       type: integer
   /admin/stats/search.{format}:
     parameters:
-      - $ref: '#/parameters/json-format'
+      - $ref: "#/parameters/json-format"
     get:
       tags:
         - analytics
@@ -422,7 +422,7 @@ paths:
           in: query
           required: true
           type: string
-          enum: ["month", "week", "day", "hour", "minute"]
+          enum: [month, week, day, hour, minute]
         - name: query
           in: query
           required: false
@@ -482,7 +482,7 @@ paths:
                           type: integer
   /admin/stats/logs.{format}:
     parameters:
-      - $ref: '#/parameters/json-csv-format'
+      - $ref: "#/parameters/json-csv-format"
     get:
       tags:
         - analytics
@@ -506,7 +506,7 @@ paths:
           in: query
           required: true
           type: string
-          enum: ["month", "week", "day", "hour", "minute"]
+          enum: [month, week, day, hour, minute]
         - name: query
           in: query
           required: false
@@ -609,7 +609,7 @@ paths:
                       type: string
   /admin/stats/users.{format}:
     parameters:
-      - $ref: '#/parameters/json-csv-format'
+      - $ref: "#/parameters/json-csv-format"
     get:
       tags:
         - analytics
@@ -633,7 +633,7 @@ paths:
           in: query
           required: true
           type: string
-          enum: ["month", "week", "day", "hour", "minute"]
+          enum: [month, week, day, hour, minute]
         - name: query
           in: query
           required: false
@@ -686,7 +686,7 @@ paths:
                       type: string
   /admin/stats/map.{format}:
     parameters:
-      - $ref: '#/parameters/json-csv-format'
+      - $ref: "#/parameters/json-csv-format"
     get:
       tags:
         - analytics
@@ -710,7 +710,7 @@ paths:
           in: query
           required: true
           type: string
-          enum: ["month", "week", "day", "hour", "minute"]
+          enum: [month, week, day, hour, minute]
         - name: query
           in: query
           required: false
@@ -769,14 +769,14 @@ paths:
 
         This API's query parameters and responses are intended to be compatible with the [DataTables server-side processing API](https://datatables.net/manual/server-side).
       parameters:
-        - $ref: '#/parameters/json-csv-format'
-        - $ref: '#/parameters/datatables-start'
-        - $ref: '#/parameters/datatables-length'
-        - $ref: '#/parameters/datatables-search-value'
-        - $ref: '#/parameters/datatables-order-column'
-        - $ref: '#/parameters/datatables-order-dir'
-        - $ref: '#/parameters/datatables-columns-data'
-        - $ref: '#/parameters/datatables-columns-name'
+        - $ref: "#/parameters/json-csv-format"
+        - $ref: "#/parameters/datatables-start"
+        - $ref: "#/parameters/datatables-length"
+        - $ref: "#/parameters/datatables-search-value"
+        - $ref: "#/parameters/datatables-order-column"
+        - $ref: "#/parameters/datatables-order-dir"
+        - $ref: "#/parameters/datatables-columns-data"
+        - $ref: "#/parameters/datatables-columns-name"
       responses:
         200:
           description: Successful response
@@ -793,13 +793,13 @@ paths:
               data:
                 type: array
                 items:
-                  $ref: '#/definitions/ApiScope'
+                  $ref: "#/definitions/ApiScope"
     post:
       tags:
         - api_scope
       summary: Create a new API scope.
       parameters:
-        - $ref: '#/parameters/json-format'
+        - $ref: "#/parameters/json-format"
         - in: body
           name: body
           description: API scope object to create
@@ -821,7 +821,7 @@ paths:
         required: true
         type: string
         format: uuid
-      - $ref: '#/parameters/json-format'
+      - $ref: "#/parameters/json-format"
     get:
       tags:
         - api_scope
@@ -835,7 +835,7 @@ paths:
             properties:
               api_scope:
                 type: object
-                $ref: '#/definitions/ApiScope'
+                $ref: "#/definitions/ApiScope"
     put:
       tags:
         - api_scope
@@ -871,14 +871,14 @@ paths:
 
         This API's query parameters and responses are intended to be compatible with the [DataTables server-side processing API](https://datatables.net/manual/server-side).
       parameters:
-        - $ref: '#/parameters/json-csv-format'
-        - $ref: '#/parameters/datatables-start'
-        - $ref: '#/parameters/datatables-length'
-        - $ref: '#/parameters/datatables-search-value'
-        - $ref: '#/parameters/datatables-order-column'
-        - $ref: '#/parameters/datatables-order-dir'
-        - $ref: '#/parameters/datatables-columns-data'
-        - $ref: '#/parameters/datatables-columns-name'
+        - $ref: "#/parameters/json-csv-format"
+        - $ref: "#/parameters/datatables-start"
+        - $ref: "#/parameters/datatables-length"
+        - $ref: "#/parameters/datatables-search-value"
+        - $ref: "#/parameters/datatables-order-column"
+        - $ref: "#/parameters/datatables-order-dir"
+        - $ref: "#/parameters/datatables-columns-data"
+        - $ref: "#/parameters/datatables-columns-name"
       responses:
         200:
           description: Successful response
@@ -895,13 +895,13 @@ paths:
               data:
                 type: array
                 items:
-                  $ref: '#/definitions/Api'
+                  $ref: "#/definitions/Api"
     post:
       tags:
         - api
       summary: Create a new API backend.
       parameters:
-        - $ref: '#/parameters/json-format'
+        - $ref: "#/parameters/json-format"
         - in: body
           name: body
           description: API backend object to create
@@ -923,7 +923,7 @@ paths:
         required: true
         type: string
         format: uuid
-      - $ref: '#/parameters/json-format'
+      - $ref: "#/parameters/json-format"
     get:
       tags:
         - api
@@ -937,7 +937,7 @@ paths:
             properties:
               admin:
                 type: object
-                $ref: '#/definitions/Api'
+                $ref: "#/definitions/Api"
     put:
       tags:
         - api
@@ -965,7 +965,7 @@ paths:
           description: Successfully deleted record
   /api-umbrella/v1/config/pending_changes.{format}:
     parameters:
-      - $ref: '#/parameters/json-format'
+      - $ref: "#/parameters/json-format"
     get:
       tags:
         - config
@@ -984,12 +984,12 @@ paths:
                 type: object
                 properties:
                   apis:
-                    $ref: '#/definitions/ConfigDiffGroup'
+                    $ref: "#/definitions/ConfigDiffGroup"
                   website_backends:
-                    $ref: '#/definitions/ConfigDiffGroup'
+                    $ref: "#/definitions/ConfigDiffGroup"
   /api-umbrella/v1/config/publish.{format}:
     parameters:
-      - $ref: '#/parameters/json-format'
+      - $ref: "#/parameters/json-format"
     post:
       tags:
         - config
@@ -1008,9 +1008,9 @@ paths:
                 type: object
                 properties:
                   apis:
-                    $ref: '#/definitions/ConfigPublish'
+                    $ref: "#/definitions/ConfigPublish"
                   website_backends:
-                    $ref: '#/definitions/ConfigPublish'
+                    $ref: "#/definitions/ConfigPublish"
             example:
               config:
                 apis:
@@ -1034,7 +1034,7 @@ paths:
                 $ref: "#/definitions/ConfigVersion"
   /api-umbrella/v1/contact.{format}:
     parameters:
-      - $ref: '#/parameters/json-format'
+      - $ref: "#/parameters/json-format"
     post:
       tags:
         - contact
@@ -1070,7 +1070,7 @@ paths:
                 format: date-time
   /api-umbrella/v1/user_roles.{format}:
     parameters:
-      - $ref: '#/parameters/json-format'
+      - $ref: "#/parameters/json-format"
     get:
       tags:
         - user_role
@@ -1091,7 +1091,7 @@ paths:
                       type: string
   /api-umbrella/v1/users.{format}:
     parameters:
-      - $ref: '#/parameters/json-format'
+      - $ref: "#/parameters/json-format"
     get:
       tags:
         - user
@@ -1101,14 +1101,14 @@ paths:
 
         This API's query parameters and responses are intended to be compatible with the [DataTables server-side processing API](https://datatables.net/manual/server-side).
       parameters:
-        - $ref: '#/parameters/json-csv-format'
-        - $ref: '#/parameters/datatables-start'
-        - $ref: '#/parameters/datatables-length'
-        - $ref: '#/parameters/datatables-search-value'
-        - $ref: '#/parameters/datatables-order-column'
-        - $ref: '#/parameters/datatables-order-dir'
-        - $ref: '#/parameters/datatables-columns-data'
-        - $ref: '#/parameters/datatables-columns-name'
+        - $ref: "#/parameters/json-csv-format"
+        - $ref: "#/parameters/datatables-start"
+        - $ref: "#/parameters/datatables-length"
+        - $ref: "#/parameters/datatables-search-value"
+        - $ref: "#/parameters/datatables-order-column"
+        - $ref: "#/parameters/datatables-order-dir"
+        - $ref: "#/parameters/datatables-columns-data"
+        - $ref: "#/parameters/datatables-columns-name"
       responses:
         200:
           description: Successful response
@@ -1125,7 +1125,7 @@ paths:
               data:
                 type: array
                 items:
-                  $ref: '#/definitions/User'
+                  $ref: "#/definitions/User"
     post:
       tags:
         - user
@@ -1152,7 +1152,7 @@ paths:
         required: true
         type: string
         format: uuid
-      - $ref: '#/parameters/json-format'
+      - $ref: "#/parameters/json-format"
     get:
       tags:
         - user
@@ -1166,7 +1166,7 @@ paths:
             properties:
               user:
                 type: object
-                $ref: '#/definitions/User'
+                $ref: "#/definitions/User"
     put:
       tags:
         - user
@@ -1202,14 +1202,14 @@ paths:
 
         This API's query parameters and responses are intended to be compatible with the [DataTables server-side processing API](https://datatables.net/manual/server-side).
       parameters:
-        - $ref: '#/parameters/json-csv-format'
-        - $ref: '#/parameters/datatables-start'
-        - $ref: '#/parameters/datatables-length'
-        - $ref: '#/parameters/datatables-search-value'
-        - $ref: '#/parameters/datatables-order-column'
-        - $ref: '#/parameters/datatables-order-dir'
-        - $ref: '#/parameters/datatables-columns-data'
-        - $ref: '#/parameters/datatables-columns-name'
+        - $ref: "#/parameters/json-csv-format"
+        - $ref: "#/parameters/datatables-start"
+        - $ref: "#/parameters/datatables-length"
+        - $ref: "#/parameters/datatables-search-value"
+        - $ref: "#/parameters/datatables-order-column"
+        - $ref: "#/parameters/datatables-order-dir"
+        - $ref: "#/parameters/datatables-columns-data"
+        - $ref: "#/parameters/datatables-columns-name"
       responses:
         200:
           description: Successful response
@@ -1226,13 +1226,13 @@ paths:
               data:
                 type: array
                 items:
-                  $ref: '#/definitions/WebsiteBackend'
+                  $ref: "#/definitions/WebsiteBackend"
     post:
       tags:
         - website_backend
       summary: Create a new website backend.
       parameters:
-        - $ref: '#/parameters/json-format'
+        - $ref: "#/parameters/json-format"
         - in: body
           name: body
           description: Website backend object to create
@@ -1254,7 +1254,7 @@ paths:
         required: true
         type: string
         format: uuid
-      - $ref: '#/parameters/json-format'
+      - $ref: "#/parameters/json-format"
     get:
       tags:
         - website_backend
@@ -1268,7 +1268,7 @@ paths:
             properties:
               website_backend:
                 type: object
-                $ref: '#/definitions/WebsiteBackend'
+                $ref: "#/definitions/WebsiteBackend"
     put:
       tags:
         - website_backend
@@ -1393,10 +1393,10 @@ definitions:
         readOnly: true
       matcher_type:
         type: string
-        enum: ["route", "regex"]
+        enum: [route, regex]
       http_method:
         type: string
-        enum: ["any", "GET", "POST", "PUT", "DELETE", "HEAD", "TRACE", "OPTIONS", "CONNECT", "PATCH"]
+        enum: [any, GET, POST, PUT, DELETE, HEAD, TRACE, OPTIONS, CONNECT, PATCH]
       frontend_matcher:
         type: string
       backend_replacement:
@@ -1414,7 +1414,7 @@ definitions:
         type: integer
       limit_by:
         type: string
-        enum: ["ip", "apiKey"]
+        enum: [ip, apiKey]
       distributed:
         type: boolean
       response_headers:
@@ -1454,7 +1454,7 @@ definitions:
         description: HTTP basic authentication
       require_https:
         type: string
-        enum: ["required_return_error", "transition_return_error", "optional"]
+        enum: [required_return_error, transition_return_error, optional]
         description: HTTPS requirements
       require_https_transition_start_at:
         type: string
@@ -1463,7 +1463,7 @@ definitions:
         type: boolean
       api_key_verification_level:
         type: string
-        enum: ["none", "transition_email", "required_email"]
+        enum: [none, transition_email, required_email]
       api_key_verification_transition_start_at:
         type: string
         format: date-time
@@ -1483,17 +1483,17 @@ definitions:
           type: string
       rate_limit_mode:
         type: string
-        enum: ["unlimited", "custom"]
+        enum: [unlimited, custom]
       rate_limits:
         type: array
         items:
           $ref: "#/definitions/ApiSettingsRateLimit"
       anonymous_rate_limit_behavior:
         type: string
-        enum: ["ip_fallback", "ip_only"]
+        enum: [ip_fallback, ip_only]
       authenticated_rate_limit_behavior:
         type: string
-        enum: ["all", "api_key_only"]
+        enum: [all, api_key_only]
       pass_api_key_header:
         type: boolean
       pass_api_key_query_param:
@@ -1513,7 +1513,7 @@ definitions:
         readOnly: true
       http_method:
         type: string
-        enum: ["any", "GET", "POST", "PUT", "DELETE", "HEAD", "TRACE", "OPTIONS", "CONNECT", "PATCH"]
+        enum: [any, GET, POST, PUT, DELETE, HEAD, TRACE, OPTIONS, CONNECT, PATCH]
       regex:
         type: string
       settings:
@@ -1559,7 +1559,7 @@ definitions:
         type: integer
       backend_protocol:
         type: string
-        enum: ["http", "https"]
+        enum: [http, https]
       frontend_host:
         type: string
       backend_host:
@@ -1574,7 +1574,7 @@ definitions:
           $ref: "#/definitions/ApiUrlMatch"
       balance_algorithm:
         type: string
-        enum: ["least_conn", "round_robin", "ip_hash"]
+        enum: [least_conn, round_robin, ip_hash]
       settings:
         $ref: "#/definitions/ApiSettings"
       sub_settings:
@@ -1630,7 +1630,7 @@ definitions:
         format: uuid
       mode:
         type: string
-        enum: ["new", "modified", "deleted", "identical"]
+        enum: [new, modified, deleted, identical]
       name:
         type: string
       active:
@@ -1680,9 +1680,9 @@ definitions:
         type: object
         properties:
           apis:
-            $ref: '#/definitions/Api'
+            $ref: "#/definitions/Api"
           website_backends:
-            $ref: '#/definitions/WebsiteBackend'
+            $ref: "#/definitions/WebsiteBackend"
       created_at:
         $ref: "#/definitions/CreatedAt"
       updated_at:
@@ -1751,7 +1751,7 @@ definitions:
         type: string
       backend_protocol:
         type: string
-        enum: ["http", "https"]
+        enum: [http, https]
       server_host:
         type: string
       server_port:

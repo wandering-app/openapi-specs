@@ -8,25 +8,25 @@ paths:
   /results/i14y:
     get:
       summary: Search Results
-      description: 'This endpoint returns search results.'
+      description: This endpoint returns search results.
       parameters:
         - name: affiliate
           in: query
-          description: 'Site handle.'
+          description: Site handle.
           required: true
           schema:
-              type: string
-              format: string
+            type: string
+            format: string
         - name: access_key
           in: query
-          description: 'The Search.gov key used to access the API'
+          description: The Search.gov key used to access the API
           required: true
           schema:
             type: string
             format: string
         - name: query
           in: query
-          description: 'Search term.'
+          description: Search term.
           required: false
           schema:
             type: string
@@ -41,7 +41,7 @@ paths:
             default: true
         - name: limit
           in: query
-          description: 'Defines the number of results to return. The default is 20, but you can specify between 1 and 50 results.'
+          description: "Defines the number of results to return. The default is 20, but you can specify between 1 and 50 results."
           required: false
           schema:
             type: integer
@@ -49,7 +49,7 @@ paths:
             default: 20
         - name: offset
           in: query
-          description: 'Defines the number of results you want to skip from the first result. The offset is used for implementing pagination. The default is 0 and the maximum is 999.'
+          description: Defines the number of results you want to skip from the first result. The offset is used for implementing pagination. The default is 0 and the maximum is 999.
           required: false
           schema:
             type: integer
@@ -65,34 +65,34 @@ paths:
             default: relevance
         - name: sitelimit
           in: query
-          description: 'Allows you to limit the results by subdomains or subfolders. You can limit to multiple locations using a space-separated list (ex. `sitelimit=search.gov/about search.gov/get-started`)'
+          description: Allows you to limit the results by subdomains or subfolders. You can limit to multiple locations using a space-separated list (ex. `sitelimit=search.gov/about search.gov/get-started`)
           required: false
           schema:
             type: string
             format: string
         - name: include_facets
           in: query
-          description: "Allows you to enable facet features to be returned in the API response."
+          description: Allows you to enable facet features to be returned in the API response.
           required: false
           schema:
             type: boolean
         - name: audience
           in: query
-          description: 'Allows you to filter results based on the Audience field. Accepts a comma-separated list of strings.'
+          description: Allows you to filter results based on the Audience field. Accepts a comma-separated list of strings.
           required: false
           schema:
             type: string
             format: string
         - name: content_type
           in: query
-          description: 'Allows you to filter results based on the Content Type field. Accepts a comma-separated list of strings.'
+          description: Allows you to filter results based on the Content Type field. Accepts a comma-separated list of strings.
           required: false
           schema:
             type: string
             format: string
         - name: created_until
           in: query
-          description: 'Allows you to set an upper bound for the date the document was created.'
+          description: Allows you to set an upper bound for the date the document was created.
           required: false
           schema:
             type: string
@@ -100,7 +100,7 @@ paths:
             description: The day in YYYY-MM-DD format.
         - name: created_since
           in: query
-          description: 'Allows you to set an lower bound for the date the document was created.'
+          description: Allows you to set an lower bound for the date the document was created.
           required: false
           schema:
             type: string
@@ -108,42 +108,42 @@ paths:
             description: The day in YYYY-MM-DD format.
         - name: mime_type
           in: query
-          description: 'Allows you to filter results based on the Mimetype field. Accepts a comma-separated list of strings.'
+          description: Allows you to filter results based on the Mimetype field. Accepts a comma-separated list of strings.
           required: false
           schema:
             type: string
             format: string
         - name: tags
           in: query
-          description: 'Allows you to filter results based on the Tags field. Accepts a comma-separated list of strings.'
+          description: Allows you to filter results based on the Tags field. Accepts a comma-separated list of strings.
           required: false
           schema:
             type: string
             format: string
         - name: searchgov_custom1
           in: query
-          description: 'Allows you to filter results based on the Search.gov Custom 1 field. Accepts a comma-separated list of strings.'
+          description: Allows you to filter results based on the Search.gov Custom 1 field. Accepts a comma-separated list of strings.
           required: false
           schema:
             type: string
             format: string
         - name: searchgov_custom2
           in: query
-          description: 'Allows you to filter results based on the Search.gov Custom 2 field. Accepts a comma-separated list of strings.'
+          description: Allows you to filter results based on the Search.gov Custom 2 field. Accepts a comma-separated list of strings.
           required: false
           schema:
             type: string
             format: string
         - name: searchgov_custom3
           in: query
-          description: 'Allows you to filter results based on the Search.gov Custom 3 field. Accepts a comma-separated list of strings.'
+          description: Allows you to filter results based on the Search.gov Custom 3 field. Accepts a comma-separated list of strings.
           required: false
           schema:
             type: string
             format: string
         - name: updated_since
           in: query
-          description: 'Allows you to set an upper bound for the date the document was last updated.'
+          description: Allows you to set an upper bound for the date the document was last updated.
           required: false
           schema:
             type: string
@@ -151,16 +151,16 @@ paths:
             description: The day in YYYY-MM-DD format.
         - name: updated_until
           in: query
-          description: 'Allows you to set an lower bound for the date the document was last updated.'
+          description: Allows you to set an lower bound for the date the document was last updated.
           required: false
           schema:
             type: string
             format: date
             description: The day in YYYY-MM-DD format.
       tags:
-      - search
+        - search
       responses:
-        '200':
+        "200":
           description: The search results 
           content:
             application/json:
@@ -169,14 +169,14 @@ paths:
                 items:
                   type: object
                   properties:
-                  - $ref: '#/components/schemas/query'
-                  - $ref: '#/components/schemas/web'
-                  - $ref: '#/components/schemas/text_best_bets'
-                  - $ref: '#/components/schemas/graphic_best_bets'
-                  - $ref: '#/components/schemas/health_topics'
-                  - $ref: '#/components/schemas/job_openings'
-                  - $ref: '#/components/schemas/federal_register_documents'
-                  - $ref: '#/components/schemas/related_search_terms'
+                    - $ref: "#/components/schemas/query"
+                    - $ref: "#/components/schemas/web"
+                    - $ref: "#/components/schemas/text_best_bets"
+                    - $ref: "#/components/schemas/graphic_best_bets"
+                    - $ref: "#/components/schemas/health_topics"
+                    - $ref: "#/components/schemas/job_openings"
+                    - $ref: "#/components/schemas/federal_register_documents"
+                    - $ref: "#/components/schemas/related_search_terms"
         default:
           description: Unexpected error
           content:
@@ -184,7 +184,7 @@ paths:
               schema:
                 type: string
                 items:
-                  $ref: '#/components/schemas/Error'
+                  $ref: "#/components/schemas/Error"
 
 components:
   schemas:   
@@ -200,16 +200,16 @@ components:
       properties:
         total: 
           type: integer
-          description:  Total number of results available
+          description: Total number of results available
         next_offset: 
           type: integer
-          description:  Offset for the subsequent results.
+          description: Offset for the subsequent results.
         include_facets: 
           type: boolean
-          description:  Returns "true" if facets are enabled, "false" if not.      
+          description: Returns "true" if facets are enabled, "false" if not.      
         spelling_correction: 
           type: string
-          description:  Spelling correction for your search term.      
+          description: Spelling correction for your search term.      
         results: 
           type: array
           description: Results are an array of arrays, each containing the properties listed below.
@@ -573,4 +573,4 @@ components:
       description: An array of related search terms, which are based on recent, common searches on the your site. Users will need to render each of these into a link that would make a new API call with that query term as they query 
   
 servers:
-  - url: 'https://api.gsa.gov/technology/searchgov/v2'
+  - url: "https://api.gsa.gov/technology/searchgov/v2"

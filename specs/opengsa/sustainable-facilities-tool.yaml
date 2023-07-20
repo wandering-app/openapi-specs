@@ -2,7 +2,7 @@
 info:
     title: SFTool API
     version: 1.0.0
-	description: |
+    description: |
         SFTool API provides machine readable data to develop a service or services to search, 
 		display, analyze, retrieve, and view SFTool data about healthy buildings and environmentally responsible purchasing.
 

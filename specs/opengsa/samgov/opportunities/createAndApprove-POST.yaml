@@ -1,4 +1,4 @@
-/v1/api/opportunities/access/{opportunityId}/accessRequest
+/v1/api/opportunities/access/{opportunityId}/accessRequest:
 post: 
   consumes: 
     - application/json

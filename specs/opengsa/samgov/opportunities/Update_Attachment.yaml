@@ -1,4 +1,4 @@
-/v1/api/{opportunityId}/attachments/{resourceId}
+/v1/api/{opportunityId}/attachments/{resourceId}:
 patch:
       tags:
         - attachments
