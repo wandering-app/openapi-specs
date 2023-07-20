@@ -1,4 +1,4 @@
-﻿/v1/api/create:
+/v1/api/create:
   post:
     tags:
       - Opportunity
