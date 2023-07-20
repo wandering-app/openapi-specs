@@ -23,10 +23,10 @@ paths:
           schema:
             type: string
             format: string
-        
+
       tags:
         - search
-      
+
       responses:
         "200":
           description: You will see an array of suggestions. Suggestions are derived from the searches performed on your website. Up to five suggestions related to your visitors' search term are returned and are updated in near real time. A given term/phrase must be searched 5 times in a 24 hour period to appear as a suggestion.
@@ -42,9 +42,9 @@ components:
       type: apiKey
       in: header
       name: X-API-KEY
-      
-security: 
+
+security:
   - ApiKeyAuth: []
-                
+
 servers:
   - url: "https://api.gsa.gov/technology/searchgov/v1"

@@ -42,7 +42,7 @@ paths:
         "200":
           description: A paged array of agencies
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Agencies"
         default:
@@ -126,7 +126,7 @@ paths:
         "200":
           description: A paged array of mobile applications
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/MobileApps"
         default:
@@ -210,7 +210,7 @@ paths:
         "200":
           description: A paged array of social media accounts
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/SocialMediaAccounts"
         default:
@@ -276,7 +276,7 @@ paths:
         "200":
           description: A paged array of tags
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Tags"
         default:
@@ -316,8 +316,8 @@ components:
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
-      in: query      
-      name: API_KEY  
+      in: query
+      name: API_KEY
   schemas:
     Agency:
       required:

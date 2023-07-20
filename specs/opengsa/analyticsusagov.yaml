@@ -8,13 +8,13 @@ paths:
     get:
       summary: Analytic Reports
       description: |
-        this endpoint returns analytic reports. 
+        this endpoint returns analytic reports.
       parameters:
         - name: report_name
           in: path
           description: Name of the report
           required: true
-          schema: 
+          schema:
             type: string
         - $ref: "#/components/parameters/limit"
         - $ref: "#/components/parameters/page"
@@ -39,13 +39,13 @@ paths:
     get:
       summary: Analytic Reports filtered by agency
       description: |
-        this endpoint returns analytic reports that are filtered by agency. 
+        this endpoint returns analytic reports that are filtered by agency.
       parameters:
         - name: report_name
           in: path
           description: Name of the report
           required: true
-          schema: 
+          schema:
             type: string
             format: string
 
@@ -53,7 +53,7 @@ paths:
           in: path
           description: Name of the agency
           required: true
-          schema: 
+          schema:
             type: string
             format: string
         - $ref: "#/components/parameters/limit"
@@ -79,13 +79,13 @@ paths:
     get:
       summary: Analytic Reports filtered by domain
       description: |
-        this endpoint returns analytic reports that are filtered by domain. 
+        this endpoint returns analytic reports that are filtered by domain.
       parameters:
         - name: report_name
           in: path
           description: Name of the report
           required: true
-          schema: 
+          schema:
             type: string
             format: string
 
@@ -93,7 +93,7 @@ paths:
           in: path
           description: Name of the domain
           required: true
-          schema: 
+          schema:
             type: string
             format: string
         - $ref: "#/components/parameters/limit"
@@ -115,8 +115,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-             
-                  
+
+
 servers:
   - url: "https://api.gsa.gov/analytics/dap/v1.1"
 components:
@@ -133,7 +133,7 @@ components:
         report_agency:
           type: string
           description: The name of the data point’s agency.
-        date_time: 
+        date_time:
           type: string
           description: The data/time the data in the data point corresponds to.
         data:
@@ -148,7 +148,7 @@ components:
           type: string
         example:
           type: string
-          
+
   parameters:
     limit:
       name: limit
@@ -170,14 +170,14 @@ components:
       description: Limit the results to in dates on or after the date specified. Expects YYYY-MM-DD.
       schema:
         type: integer
-      required: false  
+      required: false
     before:
       name: before
       in: query
       description: Limit the results to in dates on or before the date specified. Expects YYYY-MM-DD.
       schema:
         type: integer
-      required: false  
+      required: false
   securitySchemes:
     ApiKeyAuth: # arbitrary name for the security scheme
       type: apiKey

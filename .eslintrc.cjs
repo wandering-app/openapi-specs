@@ -12,5 +12,6 @@ module.exports = {
 		// specs/opengsa/samgov/entity-management.yaml
 		// specs/opengsa/samgov/exclusions.yaml
 		'yml/no-empty-mapping-value': 'off',
+		'no-trailing-spaces': 'error',
 	}
 }

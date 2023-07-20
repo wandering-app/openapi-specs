@@ -81,23 +81,23 @@ paths:
       tags:
         - search
 
-      responses:            
+      responses:
         "200":
           description: Successfully retrieved list
         "400":
           description: Query can't be blank.
         "401":
           description: Errors with inputs, such as access keys, URLs or module codes.
-          
+
 components:
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: header
       name: X-API-KEY
-      
-security: 
+
+security:
   - ApiKeyAuth: []
-                
+
 servers:
   - url: "https://api.gsa.gov/technology/searchgov/v2"
